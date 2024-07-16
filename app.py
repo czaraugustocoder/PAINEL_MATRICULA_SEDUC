@@ -20,7 +20,7 @@ warnings.filterwarnings("ignore")
 
 scope = ['https://spreadsheets.google.com/feeds']
 
-credentials = ServiceAccountCredentials.from_json_keyfile_name(path_token, scope)
+credentials = ServiceAccountCredentials.from_json_keyfile_name(r'C:\Users\03206881277\Desktop\CODE\STREAMLIT_PAINEL_MATRICULA\turmas-gepes-planilha-f3e630cb4bec.json', scope)
 
 gc = gspread.authorize(credentials)
 
@@ -52,7 +52,7 @@ st.markdown("""
 
 st.title('SEDUC')
 
-st.sidebar.image(path_logo)
+st.sidebar.image(r"C:\Users\03206881277\Desktop\CODE\STREAMLIT_PAINEL_MATRICULA\cets_logo.jpeg")
 
 st.sidebar.header("Filtre as opções que deseja:")
 
@@ -128,13 +128,17 @@ print(QTD_MAT)
 TURMAS = dados_dash['COD-TURMA'].count()
 print(TURMAS)
 
+TURMAS_ZERO = dados_dash.loc[dados_dash['QTDE-MAT'] == 0]
+TURMAS_ZERADAS = TURMAS_ZERO['COD-TURMA'].count()
+
 ESCOLAS = dados_dash['ESCOLA'].nunique()
 print(ESCOLAS)
 
-a1, a2, a3 = st.columns(3)
+a1, a2, a3, a4 = st.columns(4)
 a1.metric("QTD-MATRICULA ", f"{QTD_MAT}")
 a2.metric("TURMAS ",f"{TURMAS}")
-a3.metric("ESCOLAS ",f"{ESCOLAS}")
+a3.metric("TURMAS ZERADAS ",f"{TURMAS_ZERADAS}")
+a4.metric("ESCOLAS ",f"{ESCOLAS}")
 
 dados_dash_ensino = dados_dash.groupby('ENSINO_REDUZIDO')['QTDE-MAT'].sum().reset_index()
 
@@ -142,7 +146,11 @@ fig_ensino = go.Figure(data=[go.Bar(x=dados_dash_ensino['ENSINO_REDUZIDO'], y=da
 
 #st.plotly_chart(fig_ensino)
 
+st.write("TABELAS DE MATRÍCULAS")
 st.dataframe(dados_dash)
+
+st.write("TABELAS DE TURMAS COM MATRÍCULA ZERADA")
+st.dataframe(TURMAS_ZERO)
 
 @st.cache_data
 def convert_df(df):
