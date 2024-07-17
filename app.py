@@ -12,6 +12,7 @@ from streamlit_gsheets import GSheetsConnection
 
 current_working_directory = os.getcwd()
 
+path_logo = os.path.join(current_working_directory, "cets_logo.jpeg")
 
 import warnings
 warnings.filterwarnings("ignore")
