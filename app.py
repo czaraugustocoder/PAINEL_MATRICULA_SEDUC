@@ -3,6 +3,7 @@ import pandas as pd
 import numpy as np
 from plotly.subplots import make_subplots
 import plotly.graph_objects as go
+import plotly.express as px
 from datetime import datetime, timedelta
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
@@ -142,14 +143,23 @@ a4.metric("ESCOLAS ",f"{ESCOLAS}")
 
 dados_dash_ensino = dados_dash.groupby('ENSINO_REDUZIDO')['QTDE-MAT'].sum().reset_index()
 
-fig_ensino = go.Figure(data=[go.Bar(x=dados_dash_ensino['ENSINO_REDUZIDO'], y=dados_dash_ensino['QTDE-MAT'], textposition='outside')])
+dados_dash_turno = dados_dash.groupby('TURNO')['QTDE-MAT'].sum().reset_index()
 
-#st.plotly_chart(fig_ensino)
+fig_ensino = go.Figure(data=[go.Bar(x=dados_dash_ensino['QTDE-MAT'], y=dados_dash_ensino['ENSINO_REDUZIDO'], orientation='h', text=dados_dash_ensino['QTDE-MAT'], textposition='auto')])
 
-st.write("TABELAS DE MATRÍCULAS")
+fig_turno = go.Figure(data=[go.Pie(labels=dados_dash_turno['TURNO'], values=dados_dash_turno['QTDE-MAT'], hole=.3)])
+
+col1, col2 = st.columns(2)
+
+with col1:
+    st.plotly_chart(fig_ensino)
+
+with col2:
+    st.plotly_chart(fig_turno)
+
+st.write("TABELA DE MATRÍCULAS")
 st.dataframe(dados_dash)
-
-st.write("TABELAS DE TURMAS COM MATRÍCULA ZERADA")
+st.write("TABELA DE TURMAS COM MATRÍCULA ZERADA")
 st.dataframe(TURMAS_ZERO)
 
 @st.cache_data
