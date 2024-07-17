@@ -8,46 +8,27 @@ from datetime import datetime, timedelta
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 import os
+from streamlit_gsheets import GSheetsConnection
 
 current_working_directory = os.getcwd()
-
-path_token = os.path.join(current_working_directory, "turmas-gepes-planilha-f3e630cb4bec.json")
-
-path_logo = os.path.join(current_working_directory, "cets_logo.jpeg")
 
 
 import warnings
 warnings.filterwarnings("ignore")
 
-scope = ['https://spreadsheets.google.com/feeds']
-
-credentials = ServiceAccountCredentials.from_json_keyfile_name(path_token, scope)
-
-gc = gspread.authorize(credentials)
-
-wks = gc.open_by_key('1BiEpIPjLaAGjfgdN4qjmH3bbKD8zno9Py3nwiktUTQE').worksheet('BASE')
-
-dados = wks.get_all_values()
-
-data = []
-
-colunas = dados[0]
-
-# Imprimir os dados
-for linha in dados[1:]:
-    data.append(linha)
-
-dados_dash = pd.DataFrame(data, columns=colunas)
-
 st.set_page_config(page_title="MATRÍCULAS - REDE ESTADUAL - SEDUC",
                    layout="wide"
 )
+
+conn = st.connection("gsheets", type=GSheetsConnection)
+
+dados_dash = conn.read()
 
 st.markdown("""
 <style>
     [data-testid=stSidebar] {
         background-color: #F5F5F4;
-    }
+#   }
 </style>
 """, unsafe_allow_html=True)
 
