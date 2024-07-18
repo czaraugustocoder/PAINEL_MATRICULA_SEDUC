@@ -25,6 +25,10 @@ conn = st.connection("gsheets", type=GSheetsConnection)
 
 dados_dash = conn.read()
 
+data_atualizacao = dados_dash['DATA DE ATUALIZAÇÃO'][0]
+
+dados_dash = dados_dash.iloc[:,:-1]
+
 st.markdown("""
 <style>
     [data-testid=stSidebar] {
@@ -33,7 +37,9 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
-st.title('SEDUC')
+title = str(f"TXTTURMA ({data_atualizacao}) - GEPES\DEPLAN\SEDUC"
+
+st.title(title)
 
 st.sidebar.image(path_logo)
 
