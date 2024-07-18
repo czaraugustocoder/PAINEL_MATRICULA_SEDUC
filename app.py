@@ -60,14 +60,14 @@ escola = st.sidebar.multiselect(
     options= dados_dash["ESCOLA"].unique()
 )
 
+ensino_2 = st.sidebar.multiselect(
+    "Selecione a Modalidade",
+    options= dados_dash["ENSINO_REDUZIDO"].unique()
+)
+
 ensino_1 = st.sidebar.multiselect(
     "Selecione o Ensino",
     options= dados_dash["ENSINO"].unique()
-)
-
-ensino_2 = st.sidebar.multiselect(
-    "Selecione o Ensino Aglutinado",
-    options= dados_dash["ENSINO_REDUZIDO"].unique()
 )
 
 projeto = st.sidebar.multiselect(
