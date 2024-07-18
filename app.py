@@ -60,9 +60,14 @@ escola = st.sidebar.multiselect(
     options= dados_dash["ESCOLA"].unique()
 )
 
-ensino = st.sidebar.multiselect(
+ensino_1 = st.sidebar.multiselect(
     "Selecione o Ensino",
     options= dados_dash["ENSINO"].unique()
+)
+
+ensino_2 = st.sidebar.multiselect(
+    "Selecione o Ensino Aglutinado",
+    options= dados_dash["ENSINO_REDUZIDO"].unique()
 )
 
 projeto = st.sidebar.multiselect(
@@ -92,10 +97,14 @@ if ((len(escola) != 0)):
     print(escola)
     dados_dash = dados_dash.query(
         "ESCOLA == @escola")
-if ((len(ensino) != 0)):
-    print(ensino)
+if ((len(ensino_1) != 0)):
+    print(ensino_1)
     dados_dash = dados_dash.query(
-        "ENSINO == @ensino")
+        "ENSINO == @ensino_1")
+if ((len(ensino_2) != 0)):
+    print(ensino_2)
+    dados_dash = dados_dash.query(
+        "ENSINO_REDUZIDO == @ensino_2")
 if ((len(projeto) != 0)):
     print(projeto)
     dados_dash = dados_dash.query(
