@@ -37,7 +37,7 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
-title = str(f"TXTTURMA ({data_atualizacao}) - GEPES\DEPLAN\SEDUC"
+title = str(f"TXTTURMA ({data_atualizacao}) - GEPES\DEPLAN\SEDUC")
 
 st.title(title)
 
