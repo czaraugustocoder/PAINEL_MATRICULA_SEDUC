@@ -140,7 +140,7 @@ a4.metric("ESCOLAS ",f"{ESCOLAS}")
 
 dados_dash_ensino = dados_dash.groupby('ENSINO_REDUZIDO')['QTDE-MAT'].sum().reset_index()
 
-dados_dash_ensino = dados_dash_ensino.sort_values(by='QTDE-MAT', ascending=False)
+dados_dash_ensino = dados_dash_ensino.sort_values(by='QTDE-MAT')
 
 dados_dash_turno = dados_dash.groupby('TURNO')['QTDE-MAT'].sum().reset_index()
 
