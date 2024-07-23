@@ -147,17 +147,34 @@ dados_dash_ensino = dados_dash_ensino.sort_values(by='QTDE-MAT')
 
 dados_dash_turno = dados_dash.groupby('TURNO')['QTDE-MAT'].sum().reset_index()
 
+dados_dash_sala = dados_dash.groupby('TIPO-SALA')['QTDE-MAT'].sum().reset_index()
+
 fig_ensino = go.Figure(data=[go.Bar(x=dados_dash_ensino['QTDE-MAT'], y=dados_dash_ensino['ENSINO_REDUZIDO'], orientation='h', text=dados_dash_ensino['QTDE-MAT'], textposition='auto')])
+
+fig_ensino.update_layout(
+    title='QTDE-MAT POR MODALIDADE'
+)
 
 fig_turno = go.Figure(data=[go.Pie(labels=dados_dash_turno['TURNO'], values=dados_dash_turno['QTDE-MAT'], hole=.3)])
 
-col1, col2 = st.columns(2)
+fig_turno.update_layout(
+    title='QTDE-MAT POR TURNO'
+)
+
+fig_sala = go.Figure(data=[go.Bar(x=dados_dash_sala['TIPO-SALA'], y=dados_dash_sala['QTDE-MAT'], orientation='v', text=dados_dash_sala['QTDE-MAT'], textposition='auto')])
+
+fig_sala.update_layout(
+    title='QTDE-MAT POR TIPO DE SALA'
+)
+
+col1, col2, col3 = st.columns(3)
 
 with col1:
     st.plotly_chart(fig_ensino)
-
 with col2:
     st.plotly_chart(fig_turno)
+with col3:
+    st.plotly_chart(fig_sala)
 
 st.write("TABELA DE MATRÍCULAS")
 st.dataframe(dados_dash)
