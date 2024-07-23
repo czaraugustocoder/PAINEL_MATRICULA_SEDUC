@@ -23,7 +23,10 @@ st.set_page_config(page_title="MATRÍCULAS - REDE ESTADUAL - SEDUC",
 
 conn = st.connection("gsheets", type=GSheetsConnection)
 
-dados_dash = conn.read()
+dados_dash = conn.read(
+    worksheet="TXTTURMA",
+    ttl="360m"
+)
 
 data_atualizacao = dados_dash['DATA DE ATUALIZAÇÃO'][0]
 
