@@ -132,14 +132,18 @@ print(TURMAS)
 TURMAS_ZERO = dados_dash.loc[dados_dash['QTDE-MAT'] == 0]
 TURMAS_ZERADAS = TURMAS_ZERO['COD-TURMA'].count()
 
-ESCOLAS = dados_dash['ESCOLA'].nunique()
+ESCOLAS = dados_dash.loc[dados_dash['ESCOLA-ANEXA'] == "-"]['ESCOLA'].nunique()
 print(ESCOLAS)
 
-a1, a2, a3, a4 = st.columns(4)
+ESCOLAS_ANEXAS = dados_dash.loc[dados_dash['ESCOLA-ANEXA'] != "-"]['ESCOLA'].nunique()
+print(ESCOLAS_ANEXAS)
+
+a1, a2, a3, a4, a5 = st.columns(5)
 a1.metric("QTD-MATRICULA ", f"{QTD_MAT}")
 a2.metric("TURMAS ",f"{TURMAS}")
 a3.metric("TURMAS ZERADAS ",f"{TURMAS_ZERADAS}")
 a4.metric("ESCOLAS ",f"{ESCOLAS}")
+a5.metric("ANEXOS ",f"{ESCOLAS_ANEXAS}")
 
 dados_dash_ensino = dados_dash.groupby('ENSINO_REDUZIDO')['QTDE-MAT'].sum().reset_index()
 
