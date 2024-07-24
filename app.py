@@ -131,6 +131,10 @@ print(TURMAS)
 
 TURMAS_ZERO = dados_dash.loc[dados_dash['QTDE-MAT'] == 0]
 TURMAS_ZERADAS = TURMAS_ZERO['COD-TURMA'].count()
+QTD_TURMAS_ZERADAS = len(TURMAS_ZERO['MUNICIPIO'])
+TURMAS_ZERADAS_MUN = dados_dash.groupby('MUNICIPIO')['COD-TURMA'].count().reset_index()
+TURMAS_ZERADAS_MUN.rename(columns={'COD-TURMA': 'QTDE-ABS'}, inplace=True)
+TURMAS_ZERADAS_MUN['QTDE-REL(%)'] = round((TURMAS_ZERADAS_MUN['QTDE-ABS'] / QTD_TURMAS_ZERADAS) * 100),2)
 
 ESCOLAS = dados_dash.loc[dados_dash['ESCOLA-ANEXA'] == "-"]['ESCOLA'].nunique()
 print(ESCOLAS)
@@ -183,7 +187,11 @@ with col3:
 st.write("TABELA DE MATRÍCULAS")
 st.dataframe(dados_dash)
 st.write("TABELA DE TURMAS COM MATRÍCULA ZERADA")
-st.dataframe(TURMAS_ZERO)
+col1, col2 = st.columns(2)
+with col1:
+    st.dataframe(TURMAS_ZERO)
+with col2:
+  st.dataframe(TURMAS_ZERADAS_MUN)
 
 @st.cache_data
 def convert_df(df):
