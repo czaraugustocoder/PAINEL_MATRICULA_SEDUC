@@ -132,7 +132,7 @@ print(TURMAS)
 TURMAS_ZERO = dados_dash.loc[dados_dash['QTDE-MAT'] == 0]
 TURMAS_ZERADAS = TURMAS_ZERO['COD-TURMA'].count()
 QTD_TURMAS_ZERADAS = len(TURMAS_ZERO['MUNICIPIO'])
-TURMAS_ZERADAS_MUN = dados_dash.groupby('MUNICIPIO')['COD-TURMA'].count().reset_index()
+TURMAS_ZERADAS_MUN = TURMAS_ZERO.groupby('MUNICIPIO')['COD-TURMA'].count().reset_index()
 TURMAS_ZERADAS_MUN.rename(columns={'COD-TURMA': 'QTDE-ABS'}, inplace=True)
 TURMAS_ZERADAS_MUN['QTDE-REL(%)'] = (TURMAS_ZERADAS_MUN['QTDE-ABS'] / QTD_TURMAS_ZERADAS) * 100
 
