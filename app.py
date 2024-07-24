@@ -25,7 +25,7 @@ conn = st.connection("gsheets", type=GSheetsConnection)
 
 dados_dash = conn.read(
     worksheet="TXTTURMA",
-    ttl="30m"
+    ttl="10m"
 )
 
 data_atualizacao = dados_dash['DATA DE ATUALIZAÇÃO'][0]
