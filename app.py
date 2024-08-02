@@ -195,7 +195,7 @@ st.dataframe(dados_dash)
 st.write("TABELA DE TURMAS COM MATRÍCULA ZERADA")
 col1, col2, col3 = st.columns(3)
 with col1:
-    st.dataframe(TURMAS_ZERO[['MUNICIPIO', 'ESCOLA', 'COD-LOCAL', 'PROJETO', 'COD-ENSINO', 'FASE', 'TURMA']])
+    st.dataframe(TURMAS_ZERO[['MUNICIPIO', 'ESCOLA', 'COD-LOCAL', 'PROJETO', 'COD-ENSINO', 'FASE', 'TURNO', 'TURMA']])
 with col2:
   st.dataframe(TURMAS_ZERADAS_MUN)
 with col3:
