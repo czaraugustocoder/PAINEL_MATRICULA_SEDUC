@@ -48,6 +48,8 @@ st.sidebar.image(path_logo)
 
 st.sidebar.header("Filtre as opções que deseja:")
 
+dados_dash["COD_ENSINO"] = dados_dash["COD-ENSINO"].astype(str) + " - " + dados_dash["ENSINO"].astype(str)
+
 local = st.sidebar.multiselect(
     "Selecione a Localização",
     options= dados_dash["LOCALIZACAO"].unique()
@@ -75,7 +77,7 @@ ensino_2 = st.sidebar.multiselect(
 
 ensino_1 = st.sidebar.multiselect(
     "Selecione o Ensino",
-    options= dados_dash["ENSINO"].unique()
+    options= dados_dash["COD_ENSINO"].unique()
 )
 
 projeto = st.sidebar.multiselect(
@@ -108,7 +110,7 @@ if ((len(escola) != 0)):
 if ((len(ensino_1) != 0)):
     print(ensino_1)
     dados_dash = dados_dash.query(
-        "ENSINO == @ensino_1")
+        "COD_ENSINO == @ensino_1")
 if ((len(ensino_2) != 0)):
     print(ensino_2)
     dados_dash = dados_dash.query(
@@ -199,6 +201,8 @@ with col2:
     st.plotly_chart(fig_turno)
 with col3:
     st.plotly_chart(fig_sala)
+
+dados_dash = dados_dash.drop('COD_ENSINO', axis=1)
 
 st.write("TABELA DE MATRÍCULAS")
 st.dataframe(dados_dash)
