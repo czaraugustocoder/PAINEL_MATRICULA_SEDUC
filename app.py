@@ -88,6 +88,11 @@ fase = st.sidebar.multiselect(
     options= dados_dash["FASE"].unique()
 )
 
+distrito = st.sidebar.multiselect(
+    "Selecione o distrito",
+    options= dados_dash["DISTRITO"].unique()
+)
+
 if ((len(local) != 0)):
     print(local)
     dados_dash = dados_dash.query(
@@ -120,6 +125,11 @@ if ((len(fase) != 0)):
     print(fase)
     dados_dash = dados_dash.query(
         "FASE == @fase")
+
+if ((len(distrito) != 0)):
+    print(distrito)
+    dados_dash = dados_dash.query(
+        "DISTRITO == @distrito")
     
 dados_dash['QTDE-MAT'] = dados_dash['QTDE-MAT'].astype('int64') 
     
