@@ -58,6 +58,11 @@ mun = st.sidebar.multiselect(
     options= dados_dash["MUNICIPIO"].unique()
 )
 
+distrito = st.sidebar.multiselect(
+    "Selecione o distrito",
+    options= dados_dash["DISTRITO"].unique()
+)
+
 escola = st.sidebar.multiselect(
     "Selecione a Escola",
     options= dados_dash["ESCOLA"].unique()
@@ -86,11 +91,6 @@ turno = st.sidebar.multiselect(
 fase = st.sidebar.multiselect(
     "Selecione o fase",
     options= dados_dash["FASE"].unique()
-)
-
-distrito = st.sidebar.multiselect(
-    "Selecione o distrito",
-    options= dados_dash["DISTRITO"].unique()
 )
 
 if ((len(local) != 0)):
