@@ -161,7 +161,7 @@ if ((len(fase) != 0)):
 if ((len(distrito) != 0)):
     print(distrito)
     dados_dash = dados_dash.query(
-        "DISTRITO == @distrito")
+        "CDE == @distrito")
     
 dados_dash['QTDE-MAT'] = dados_dash['QTDE-MAT'].astype('int64') 
     
