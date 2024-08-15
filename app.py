@@ -48,11 +48,11 @@ st.sidebar.image(path_logo)
 
 st.sidebar.header("Filtre as opções que deseja:")
 
-dados_dash["COD-INEP"].astype(str)
+dados_dash["COD-INEP"] = dados_dash["COD-INEP"].astype(str)
 
-dados_dash["ESCOLA"].astype(str)
+dados_dash["ESCOLA"] = dados_dash["ESCOLA"].astype(str)
 
-dados_dash["ESCOLA"].astype(str)
+dados_dash["ESCOLA"] = dados_dash["ESCOLA"].astype(str)
 
 dados_dash["COD_ENSINO"] = dados_dash["COD-ENSINO"].astype(str) + " - " + dados_dash["ENSINO"].astype(str)
 
