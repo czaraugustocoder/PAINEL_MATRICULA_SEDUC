@@ -48,13 +48,17 @@ st.sidebar.image(path_logo)
 
 st.sidebar.header("Filtre as opções que deseja:")
 
-dados_dash["COD-INEP"] = dados_dash["COD-INEP"].astype(int)
+dados_dash["COD-INEP"] = dados_dash["COD-INEP"].astype(str)
+dados_dash["COD-INEP"] = dados_dash["COD-INEP"].str.split(".")[0]
 
-dados_dash["ESCOLA"] = dados_dash["ESCOLA"].astype(int)
+dados_dash["ESCOLA"] = dados_dash["ESCOLA"].astype(str)
+dados_dash["ESCOLA"] = dados_dash["ESCOLA"].str.split(".")[0]
 
-dados_dash["COD-LOCAL"] = dados_dash["COD-LOCAL"].astype(int)
+dados_dash["COD-LOCAL"] = dados_dash["COD-LOCAL"].astype(str)
+dados_dash["COD-LOCAL"] = dados_dash["COD-LOCAL"].str.split(".")[0]
 
-dados_dash["COD-ESCOLA-LOCAL"] = dados_dash["COD-ESCOLA-LOCAL"].astype(int)
+dados_dash["COD-LOCAL"] = dados_dash["COD-LOCAL"].astype(str)
+dados_dash["COD-LOCAL"] = dados_dash["COD-LOCAL"].str.split(".")[0]
 
 dados_dash["COD_ENSINO"] = dados_dash["COD-ENSINO"].astype(str) + " - " + dados_dash["ENSINO"].astype(str)
 
