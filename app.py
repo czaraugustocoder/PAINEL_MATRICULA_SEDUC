@@ -92,7 +92,7 @@ mun = st.sidebar.multiselect(
 
 distrito = st.sidebar.multiselect(
     "Selecione o distrito",
-    options= dados_dash["DISTRITO"].unique()
+    options= ['-', 'CDE1', 'CDE2', 'CDE3', 'CDE4', 'CDE5', 'CDE6', 'CDE7']
 )
 
 escola = st.sidebar.multiselect(
