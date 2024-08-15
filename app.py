@@ -235,6 +235,7 @@ with col3:
 dados_dash = dados_dash.drop('COD_ENSINO', axis=1)
 dados_dash = dados_dash.drop('ESCOLA_COMPLETA', axis=1)
 dados_dash = dados_dash.drop('COD-TURMA', axis=1)
+dados_dash = dados_dash.drop('CDE', axis=1)
 
 st.write("TABELA DE MATRÍCULAS")
 st.dataframe(dados_dash)
