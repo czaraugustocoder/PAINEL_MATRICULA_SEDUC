@@ -70,7 +70,11 @@ dict_cde = {
         '-'
     ]
 }
-dados_dash['CDE'] = dados_dash['DISTRITO'].map(dict_cde)
+
+dfcde = pd.DataFrame.from_dict(dict_cde)
+dfcde_dic =  dfcde.set_index('COORDNEDARIA')['CDE'].to_dict()
+
+dados_dash['CDE'] = dados_dash['DISTRITO'].map(dfcde_dic)
 
 dados_dash["COD_ENSINO"] = dados_dash["COD-ENSINO"].astype(str) + " - " + dados_dash["ENSINO"].astype(str)
 
