@@ -48,6 +48,12 @@ st.sidebar.image(path_logo)
 
 st.sidebar.header("Filtre as opções que deseja:")
 
+dados_dash["COD-INEP"].astype(str)
+
+dados_dash["ESCOLA"].astype(str)
+
+dados_dash["ESCOLA"].astype(str)
+
 dados_dash["COD_ENSINO"] = dados_dash["COD-ENSINO"].astype(str) + " - " + dados_dash["ENSINO"].astype(str)
 
 local = st.sidebar.multiselect(
@@ -203,6 +209,8 @@ with col3:
     st.plotly_chart(fig_sala)
 
 dados_dash = dados_dash.drop('COD_ENSINO', axis=1)
+
+dados_dash = dados_dash.drop('COD-TURMA', axis=1)
 
 st.write("TABELA DE MATRÍCULAS")
 st.dataframe(dados_dash)
