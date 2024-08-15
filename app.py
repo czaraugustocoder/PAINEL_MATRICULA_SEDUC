@@ -209,7 +209,7 @@ dados_dash = dados_dash.drop('COD-TURMA', axis=1)
 st.write("TABELA DE MATRÍCULAS")
 st.dataframe(dados_dash)
 st.write("TABELA DE TURMAS COM MATRÍCULA ZERADA")
-col1, col2, col3 = st.columns([3, 2, 2])
+col1, col2, col3 = st.columns([4, 2, 2])
 with col1:
     st.dataframe(TURMAS_ZERO[['MUNICIPIO', 'ESCOLA', 'COD-LOCAL', 'PROJETO', 'COD-ENSINO', 'FASE', 'TURNO', 'TURMA']])
 with col2:
