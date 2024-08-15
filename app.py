@@ -54,6 +54,10 @@ dados_dash["ESCOLA"] = dados_dash["ESCOLA"].astype(str)
 
 dados_dash["ESCOLA"] = dados_dash["ESCOLA"].astype(str)
 
+dados_dash["COD-LOCAL"] = dados_dash["COD-LOCAL"].astype(str)
+
+dados_dash["COD-ESCOLA-LOCAL"] = dados_dash["COD-ESCOLA-LOCAL"].astype(str)
+
 dados_dash["COD_ENSINO"] = dados_dash["COD-ENSINO"].astype(str) + " - " + dados_dash["ENSINO"].astype(str)
 
 local = st.sidebar.multiselect(
