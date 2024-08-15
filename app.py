@@ -48,8 +48,8 @@ st.sidebar.image(path_logo)
 
 st.sidebar.header("Filtre as opções que deseja:")
 
-dict_cde = {"COORDNEDARIA":['COORD. DISTRITAL 03', 'COORD. DISTRITAL 01', 'COORD. DISTRITAL 07', 'COORD. DISTRITAL 02', 'COORD. DISTRITAL 05', 'COORD. DISTRITAL 04', 'COORD. DISTRITAL 06', '-'], "CDE":['CDE3', 'CDE1', 'CDE7, 'CDE2', 'CDE5', 'CDE4', 'CDE6', '-']}
-dados_dash['CDE'] = dados_dash['DISTRITO'].map(dict_cde)
+#dict_cde = {"COORDNEDARIA":['COORD. DISTRITAL 03', 'COORD. DISTRITAL 01', 'COORD. DISTRITAL 07', 'COORD. DISTRITAL 02', 'COORD. DISTRITAL 05', 'COORD. DISTRITAL 04', 'COORD. DISTRITAL 06', '-'], "CDE":['CDE3', 'CDE1', 'CDE7, 'CDE2', 'CDE5', 'CDE4', 'CDE6', '-']}
+#dados_dash['CDE'] = dados_dash['DISTRITO'].map(dict_cde)
 
 dados_dash["COD_ENSINO"] = dados_dash["COD-ENSINO"].astype(str) + " - " + dados_dash["ENSINO"].astype(str)
 
