@@ -172,7 +172,6 @@ TURMAS = dados_dash['COD-TURMA'].count()
 print(TURMAS)
 
 TURMAS_ZERO = dados_dash.loc[dados_dash['QTDE-MAT'] == 0]
-TURMAS_ZERO = dados_dash.loc[dados_dash['ESCOLA'] != '57']
 TURMAS_ZERADAS = TURMAS_ZERO['COD-TURMA'].count()
 QTD_TURMAS_ZERADAS = len(TURMAS_ZERO['MUNICIPIO'])
 
