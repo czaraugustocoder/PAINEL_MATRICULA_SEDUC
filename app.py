@@ -210,7 +210,7 @@ fig_ensino_count = go.Figure(data=[go.Bar(x=dados_dash_ensino_count['ENSINO_REDU
 dados_dash_turno_count = dados_dash.groupby('TURNO')['COD-TURMA'].count().reset_index()
 fig_turno_count = go.Figure(data=[go.Pie(labels=dados_dash_turno_count['TURNO'], values=dados_dash_turno_count['COD-TURMA'], hole=.3)])
 
-col1, col2 = st.columns([3, 2])
+col1, col2 = st.columns([4, 2])
 with col1:
     st.plotly_chart(fig_ensino_count)
 with col2:
