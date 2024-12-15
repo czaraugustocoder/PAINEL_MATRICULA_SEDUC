@@ -198,6 +198,24 @@ a3.metric("TURMAS ZERADAS ",f"{TURMAS_ZERADAS}")
 a4.metric("ESCOLAS ",f"{ESCOLAS}")
 a5.metric("ANEXOS ",f"{ESCOLAS_ANEXAS}")
 
+# QTD-CONTAGEM
+# TABELA DA CONTAGEM DE TURMAS - ENSINO
+dados_dash_ensino_count = dados_dash.groupby('ENSINO_REDUZIDO')['COD-TURMA'].count().reset_index()
+fig_ensino_count = go.Figure(data=[go.Bar(x=dados_dash_ensino_count['ENSINO_REDUZIDO'], y=dados_dash_ensino_count['COD-TURMA'], orientation='v', text=dados_dash_ensino_count['COD-TURMA'], textposition='auto')])
+
+# TABELA DA CONTAGEM DE TURMAS - TURNO
+dados_dash_turno_count = dados_dash.groupby('TURNO')['COD-TURMA'].count().reset_index()
+fig_turno_count = go.Figure(data=[go.Pie(labels=dados_dash_turno_count['TURNO'], values=dados_dash_turno_count['COD-TURMA'], hole=.3)])
+
+col1, col2 = st.columns(2)
+with col1:
+    st.plotly_chart(fig_ensino_count)
+with col2:
+    st.plotly_chart(fig_turno_count)
+
+
+# QTD-MATRICULA
+
 dados_dash_ensino = dados_dash.groupby('ENSINO_REDUZIDO')['QTDE-MAT'].sum().reset_index()
 
 dados_dash_ensino = dados_dash_ensino.sort_values(by='QTDE-MAT')
