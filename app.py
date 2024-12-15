@@ -205,10 +205,16 @@ dados_dash_ensino_count = dados_dash.groupby('ENSINO_REDUZIDO')['COD-TURMA'].cou
 dados_dash_ensino_count = dados_dash_ensino_count.sort_values(by='COD-TURMA', ascending=False)
 # gráfico
 fig_ensino_count = go.Figure(data=[go.Bar(x=dados_dash_ensino_count['ENSINO_REDUZIDO'], y=dados_dash_ensino_count['COD-TURMA'], orientation='v', text=dados_dash_ensino_count['COD-TURMA'], textposition='auto')])
+fig_ensino_count.update_layout(
+    title='QTDE-TURMAS POR MODALIDADE'
+)
 
 # TABELA DA CONTAGEM DE TURMAS - TURNO
 dados_dash_turno_count = dados_dash.groupby('TURNO')['COD-TURMA'].count().reset_index()
 fig_turno_count = go.Figure(data=[go.Pie(labels=dados_dash_turno_count['TURNO'], values=dados_dash_turno_count['COD-TURMA'], hole=.3)])
+fig_turno_count.update_layout(
+    title='QTDE-TURMAS POR TURNO'
+)
 
 col1, col2 = st.columns([4, 2])
 with col1:
