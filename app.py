@@ -201,6 +201,9 @@ a5.metric("ANEXOS ",f"{ESCOLAS_ANEXAS}")
 # QTD-CONTAGEM
 # TABELA DA CONTAGEM DE TURMAS - ENSINO
 dados_dash_ensino_count = dados_dash.groupby('ENSINO_REDUZIDO')['COD-TURMA'].count().reset_index()
+# Ordenar em ordem decrescente com base na coluna 'COD-TURMA'
+dados_dash_ensino_count = dados_dash_ensino_count.sort_values(by='COD-TURMA', ascending=False)
+# gráfico
 fig_ensino_count = go.Figure(data=[go.Bar(x=dados_dash_ensino_count['ENSINO_REDUZIDO'], y=dados_dash_ensino_count['COD-TURMA'], orientation='v', text=dados_dash_ensino_count['COD-TURMA'], textposition='auto')])
 
 # TABELA DA CONTAGEM DE TURMAS - TURNO
