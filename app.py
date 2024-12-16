@@ -191,12 +191,14 @@ print(ESCOLAS)
 ESCOLAS_ANEXAS = dados_dash.loc[dados_dash['ESCOLA-ANEXA'] != "-"]['ESCOLA'].nunique()
 print(ESCOLAS_ANEXAS)
 
+st.markdown("<hr>", unsafe_allow_html=True)
 a1, a2, a3, a4, a5 = st.columns(5)
 a1.metric("QTD-MATRICULA ", f"{QTD_MAT}")
 a2.metric("TURMAS ",f"{TURMAS}")
 a3.metric("TURMAS ZERADAS ",f"{TURMAS_ZERADAS}")
 a4.metric("ESCOLAS ",f"{ESCOLAS}")
 a5.metric("ANEXOS ",f"{ESCOLAS_ANEXAS}")
+st.markdown("<hr>", unsafe_allow_html=True)
 
 # QTD-CONTAGEM
 # TABELA DA CONTAGEM DE TURMAS - ENSINO
