@@ -191,51 +191,14 @@ print(ESCOLAS)
 ESCOLAS_ANEXAS = dados_dash.loc[dados_dash['ESCOLA-ANEXA'] != "-"]['ESCOLA'].nunique()
 print(ESCOLAS_ANEXAS)
 
-# Estilização personalizada com CSS
-st.markdown(
-    """
-    <style>
-    .card {
-        background-color: #f9f9f9; /* Cor de fundo do card */
-        border: 1px solid #333;   /* Borda escurecida */
-        border-radius: 10px;      /* Bordas arredondadas */
-        padding: 20px;            /* Espaçamento interno */
-        margin: 10px 0;           /* Espaçamento externo */
-        box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1); /* Sombra para o card */
-    }
-    .metric-container {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-    .metric {
-        text-align: center;
-        margin: 0 10px;
-    }
-    </style>
-    """,
-    unsafe_allow_html=True
-)
-
-# Layout do card
-st.markdown('<div class="card">', unsafe_allow_html=True)
-st.markdown('<div class="metric-container">', unsafe_allow_html=True)
-
-# Exibição dos metrics
+st.markdown("<hr>", unsafe_allow_html=True)
 a1, a2, a3, a4, a5 = st.columns(5)
-with a1:
-    st.metric("QTD-MATRICULA", f"{QTD_MAT}")
-with a2:
-    st.metric("TURMAS", f"{TURMAS}")
-with a3:
-    st.metric("TURMAS ZERADAS", f"{TURMAS_ZERADAS}")
-with a4:
-    st.metric("ESCOLAS", f"{ESCOLAS}")
-with a5:
-    st.metric("ANEXOS", f"{ESCOLAS_ANEXAS}")
-
-st.markdown('</div>', unsafe_allow_html=True)
-st.markdown('</div>', unsafe_allow_html=True)
+a1.metric("QTD-MATRICULA ", f"{QTD_MAT}")
+a2.metric("TURMAS ",f"{TURMAS}")
+a3.metric("TURMAS ZERADAS ",f"{TURMAS_ZERADAS}")
+a4.metric("ESCOLAS ",f"{ESCOLAS}")
+a5.metric("ANEXOS ",f"{ESCOLAS_ANEXAS}")
+st.markdown("<hr>", unsafe_allow_html=True)
 
 # QTD-CONTAGEM
 # TABELA DA CONTAGEM DE TURMAS - ENSINO
